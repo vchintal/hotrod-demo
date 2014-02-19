@@ -23,8 +23,8 @@
 
 package com.redhat.middleware.jdg;
 
-import org.infinispan.api.BasicCache;
-import org.infinispan.api.BasicCacheContainer;
+import org.infinispan.client.hotrod.RemoteCache;
+import org.infinispan.client.hotrod.RemoteCacheManager;
 
 /**
  * Provides a method to delay execution.
@@ -38,14 +38,15 @@ public abstract class DelayableDemoClient<K, V> extends AbstractHotRodDemoClient
 	private static final long DEFAULT_DELAY_MS = 50;
 	private long delayMs = DEFAULT_DELAY_MS;
 	
-	public DelayableDemoClient(BasicCache<K, V> cache) {
+	public DelayableDemoClient(RemoteCache<K,V> cache) {
 		super(cache);
 	}
 
-	public DelayableDemoClient(BasicCacheContainer container, String cacheName) {
-		super(container, cacheName);
+	public DelayableDemoClient(RemoteCacheManager cm, String cacheName) {
+		super(cm, cacheName);
 	}
 	
+
 	protected void delay() {
 		if (delayMs > 0) {
 			try {

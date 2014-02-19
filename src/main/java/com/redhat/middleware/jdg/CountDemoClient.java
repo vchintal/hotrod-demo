@@ -25,8 +25,8 @@ package com.redhat.middleware.jdg;
 
 import java.util.logging.Logger;
 
-import org.infinispan.api.BasicCache;
-import org.infinispan.api.BasicCacheContainer;
+import org.infinispan.client.hotrod.RemoteCache;
+import org.infinispan.client.hotrod.RemoteCacheManager;
 
 /**
  * A simple hotrod client that populates the cache sequentially by counting
@@ -51,12 +51,12 @@ public class CountDemoClient extends DelayableDemoClient<Integer, Object> {
 	 */
 	private Object payload = DEFAULT_PAYLOAD;
 
-	public CountDemoClient(BasicCache<Integer, Object> cache) {
+	public CountDemoClient(RemoteCache<Integer, Object> cache) {
 		super(cache);
 	}
 
-	public CountDemoClient(BasicCacheContainer container, String cacheName) {
-		super(container, cacheName);
+	public CountDemoClient(RemoteCacheManager cm, String cacheName) {
+		super(cm, cacheName);
 	}
 
 	@Override

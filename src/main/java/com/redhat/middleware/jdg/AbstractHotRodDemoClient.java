@@ -22,8 +22,8 @@
 */
 package com.redhat.middleware.jdg;
 
-import org.infinispan.api.BasicCache;
-import org.infinispan.api.BasicCacheContainer;
+import org.infinispan.client.hotrod.RemoteCache;
+import org.infinispan.client.hotrod.RemoteCacheManager;
 
 /**
  * 
@@ -35,7 +35,7 @@ import org.infinispan.api.BasicCacheContainer;
 public abstract class AbstractHotRodDemoClient<K, V> implements HotRodDemoClient<K, V> {
 	public static final boolean DEFAULT_CLEAR_ON_FINISH = true;
 	
-	private final BasicCache<K, V> cache;
+	private final RemoteCache<K, V> cache;
 	
 	/**
 	 * If set to true, cache will be cleared once runSync() completes
@@ -43,12 +43,12 @@ public abstract class AbstractHotRodDemoClient<K, V> implements HotRodDemoClient
 	private boolean clearOnFinish = DEFAULT_CLEAR_ON_FINISH;
 	
 	
-	@SuppressWarnings("unchecked")
-	public AbstractHotRodDemoClient(BasicCacheContainer container, String cacheName) {
-		this((BasicCache<K, V>) container.getCache(cacheName));
+	@SuppressWarnings({ "unchecked"})
+	public AbstractHotRodDemoClient(RemoteCacheManager cm, String cacheName) {
+		this((RemoteCache<K,V>)cm.getCache(cacheName));
 	}
 
-	public AbstractHotRodDemoClient(BasicCache<K, V> cache) {
+	public AbstractHotRodDemoClient(RemoteCache<K,V> cache) {
 		super();
 		this.cache = cache;
 	}
@@ -75,7 +75,7 @@ public abstract class AbstractHotRodDemoClient<K, V> implements HotRodDemoClient
 	 */
 	public abstract void clear();
 
-	public BasicCache<K, V> getCache() {
+	public RemoteCache<K, V> getCache() {
 		return cache;
 	}
 

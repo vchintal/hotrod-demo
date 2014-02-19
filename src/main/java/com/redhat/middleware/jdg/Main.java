@@ -26,9 +26,8 @@ package com.redhat.middleware.jdg;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import org.infinispan.api.BasicCache;
+import org.infinispan.client.hotrod.RemoteCache;
 import org.infinispan.client.hotrod.RemoteCacheManager;
-import org.jboss.logging.Logger.Level;
 
 /**
  * Main demo launcher
@@ -61,6 +60,7 @@ public class Main {
 		final String consumerKey = System.getProperty("jdg.demo.consumerKey");
 		final String consumerSecret = System.getProperty("jdg.demo.consumerSecret");
 		
+		@SuppressWarnings("deprecation")
 		RemoteCacheManager cm = new RemoteCacheManager(initialList);
 		
 		if(useTwitter) {
@@ -82,7 +82,7 @@ public class Main {
 			countDemo.startSync();
 			
 			System.out.println("Keys in cache!");
-			BasicCache<Object, Object> cache = cm.getCache(cacheName);
+			RemoteCache<Object, Object> cache = cm.getCache(cacheName);
 			Set<Object> keys = cache.keySet();
 			for (Object key : keys) {
 			   System.out.println(key);

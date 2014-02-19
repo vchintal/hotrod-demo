@@ -29,8 +29,8 @@ import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.infinispan.api.BasicCache;
-import org.infinispan.api.BasicCacheContainer;
+import org.infinispan.client.hotrod.RemoteCache;
+import org.infinispan.client.hotrod.RemoteCacheManager;
 
 import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
@@ -68,16 +68,16 @@ public class TwitterDemoClient extends DelayableDemoClient<Long, Status> {
 	private String accessTokenSecret;
 	private int maxEntries = DEFAULT_MAX_ENTRIES;
 
-	public TwitterDemoClient(BasicCache<Long, Status> cache,
+	public TwitterDemoClient(RemoteCache<Long, Status> cache,
 			String consumerKey, String consumerSecret) {
 		super(cache);
 		this.consumerKey = consumerKey;
 		this.consumerSecret = consumerSecret;
 	}
 
-	public TwitterDemoClient(BasicCacheContainer container, String cacheName,
+	public TwitterDemoClient(RemoteCacheManager cm, String cacheName,
 			String consumerKey, String consumerSecret) {
-		super(container, cacheName);
+		super(cm, cacheName);
 		this.consumerKey = consumerKey;
 		this.consumerSecret = consumerSecret;
 	}
