@@ -54,6 +54,7 @@ public class Main {
 		final String initialList = System.getProperty("jdg.demo.initialList", DEFAULT_INITIAL_LIST);
 		final String cacheName = System.getProperty("jdg.demo.cacheName", CACHE_NAME);
 		final int maxEntries = Integer.parseInt(System.getProperty("jdg.demo.maxEntries", "1000"));
+		final int startEntryIndex = Integer.parseInt(System.getProperty("jdg.demo.startEntryIndex", "0"));
 		final boolean clearOnFinish = Boolean.parseBoolean(System.getProperty("jdg.demo.clearOnFinish", "true"));
 		final int putDelay = Integer.parseInt(System.getProperty("jdg.demo.putDelay", "50"));
 		final boolean useTwitter = Boolean.parseBoolean(System.getProperty("jdg.demo.useTwitter", "false"));
@@ -75,6 +76,7 @@ public class Main {
 			logger.info("Loading "+ maxEntries +" objects into cache '" + cacheName + "' in JDG grid connected to: " + initialList);
 			
 			CountDemoClient countDemo = new CountDemoClient(cm, cacheName);
+			countDemo.setStartEntryIndex(startEntryIndex);
 			countDemo.setMaxEntries(maxEntries);
 			countDemo.setPayload("some example payload, it can be serializable object");
 			countDemo.setClearOnFinish(clearOnFinish);

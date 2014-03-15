@@ -45,6 +45,7 @@ public class CountDemoClient extends DelayableDemoClient<Integer, Object> {
 	 * Max number of entries to generate.
 	 */
 	private int maxEntries = DEFAULT_MAX_ENTRIES;
+	private int startEntryIndex = 0;
 	
 	/**
 	 * Payload you want to put for each entry (e.g., to test w/ different payload sizes).
@@ -61,7 +62,7 @@ public class CountDemoClient extends DelayableDemoClient<Integer, Object> {
 
 	@Override
 	public void runSync() {
-		for (int i = 0; i < maxEntries; i++) {
+		for (int i = startEntryIndex; i < (maxEntries + startEntryIndex) ; i++) {
 			logger.info("Putting object #" + i + " into cache: " + payload);
 			getCache().put(i, payload);			
 			delay();
@@ -87,6 +88,14 @@ public class CountDemoClient extends DelayableDemoClient<Integer, Object> {
 
 	public void setMaxEntries(int maxEntries) {
 		this.maxEntries = maxEntries;
+	}
+
+	public int getStartEntryIndex() {
+		return startEntryIndex;
+	}
+
+	public void setStartEntryIndex(int startEntryIndex) {
+		this.startEntryIndex = startEntryIndex;
 	}
 
 	public Object getPayload() {
