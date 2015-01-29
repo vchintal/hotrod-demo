@@ -42,7 +42,7 @@ Assuming the project has already been build there should be a JAR that has the d
 
 	java -Djdg.demo.initialList=localhost:11222 -Djdg.demo.cacheName=labCache -Djdg.demo.startEntryIndex=0 -Djdg.demo.maxEntries=100 -Djdg.demo.clearOnFinish=false -Djdg.demo.putDelay=0 -Djdg.demo.useTwitter=false -jar hotrod-demo-0.0.2-SNAPSHOT-jar-with-dependencies.jar
 
-* **-Djdg.demo.initialList** must be set to at least one data grid node's hotrod interface. See HotRod Client documentation equivalent of: <http://docs.jboss.org/infinispan/5.1/apidocs/org/infinispan/client/hotrod/RemoteCacheManager.html#RemoteCacheManager(java.lang.String,%20boolean)/>
+* **-Djdg.demo.initialList** must be set to at least one data grid node's hotrod interface. See HotRod Client documentation equivalent of: [RemoteCacheManager] (https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Data_Grid/6.4/html-single/API_Documentation/files/api/org/infinispan/client/hotrod/RemoteCacheManager.html)
 * **-Djdg.demo.cacheName** must be set to the name of the cache to load the data into. All nodes in the cluster must have this cache.  There is a default cache, named `namedCache`
 * **-Djdg.demo.startEntryIndex** is the first number in set of entries loaded. So, if this value is 10 and the maxEntries (below) is 10, then the keys that will be loaded are: 10 to 20
 * **-Djdg.demo.maxEntries** is the count of data entries to load
@@ -61,7 +61,7 @@ Please make sure JDG 6.4 Maven repository is installed and configured as per the
 	mvn clean package
 	mvn exec:java -Djdg.demo.initialList=192.168.1.115:11222 -Djdg.demo.cacheName=labCache -Djdg.demo.startEntryIndex=0 -Djdg.demo.maxEntries=1000 -Djdg.demo.clearOnFinish=false -Djdg.demo.putDelay=5 -Djdg.demo.useTwitter=false
 
-* **-Djdg.demo.initialList** must be set to at least one data grid node's hotrod interface. See HotRod Client documentation equivalent of: <http://docs.jboss.org/infinispan/5.1/apidocs/org/infinispan/client/hotrod/RemoteCacheManager.html#RemoteCacheManager(java.lang.String,%20boolean)/>
+* **-Djdg.demo.initialList** must be set to at least one data grid node's hotrod interface. See HotRod Client documentation equivalent of: [RemoteCacheManager] (https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Data_Grid/6.4/html-single/API_Documentation/files/api/org/infinispan/client/hotrod/RemoteCacheManager.html)
 * **-Djdg.demo.cacheName** must be set to the name of the cache to load the data into. All nodes in the cluster must have this cache.
 * **-Djdg.demo.startEntryIndex** is the first number in set of entries loaded. So, if this value is 10 and the maxEntries (below) is 10, then the keys that will be loaded are: 10 to 20
 * **-Djdg.demo.maxEntries** is the count of data entries to load
