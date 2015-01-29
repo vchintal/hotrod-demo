@@ -34,8 +34,8 @@ The Visualizer application can be found: <https://github.com/infinispan/visual/>
 # 1. Running the Data Grid Loader
 
 ## 1.1 System requirements
- * JBoss Data Grid 6.0 or Infinispan
- * Maven 2
+ * JBoss Data Grid 6.4.0 
+ * Maven 3 
 
 ## 1.2 Running the Pre-built Demo
 Assuming the project has already been build there should be a JAR that has the dependencies included in it.  Execute main class `com.redhat.middleware.jdg.Main`.  Modify the properties for your environment and preferences for loading the grid with data.
@@ -53,11 +53,8 @@ Assuming the project has already been build there should be a JAR that has the d
 # 2. Building
 
 ## 2.1 Configure Maven
-If not using Infinispan, everything should be good to go.
 
-If you are using JDG 6, please make sure JDG 6 repository is configured based on JDG 6 Maven 
-Repository installation instructions.  Please change the `pom.xml` so that the Infinispan 
-dependency is based on JDG 6 repository.
+Please make sure JDG 6.4 Maven repository is installed and configured as per the instructions in the official documentation. 
 
 ## 2.2 Building and Running from Source 
 
